@@ -1,0 +1,250 @@
+{
+    "apiVersion": "4.0.2",
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Employee API Documentation",
+      "description": "An API documentation for Employee api developed in node and documented in the swagger-2.0 specification",
+      "license": {
+        "name": "MIT Liscense",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000/",
+    "basePath": "api",
+    "tags": [
+      {
+        "name": "Employe",
+        "description": "API's for Employees"
+      }
+    ],
+    "schemes": ["http", "https"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+      "/employes": {
+        "post": {
+          "tags": ["Employees"],
+          "summary": "Post Employee",
+          "description": "Employee will be Posted",
+          "consumes": "application/json",
+          "produces": "application/json",
+          "parameters": [
+            {
+              "name": "Employee Details",
+              "description": "all Employee details will be given in the body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "$ref": "#/definitions/Employee"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success!",
+              "examples": {
+                "message": "Employee is Saved Successfully",
+                "data": [],
+                "status": 200
+              }
+            }
+          },
+          "400": {
+            "description": "Failed!",
+            "examples": {
+              "application/json": {
+                "message": "Coundn't Save Employee",
+                "data": [],
+                "status": 400
+              }
+            }
+          }
+        },
+        "get": {
+          "tags": ["Employees"],
+          "summary": "Employee List",
+          "description": "Employee List Will be Shown",
+          "consumes": "application/json",
+          "produces": "application/json",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Success!",
+              "examples": {
+                "application/json": {
+                  "message": "Employee List Fetched Successfully",
+                  "data": [
+                    {
+                        "_id" : "5ca9c6fe54aa9c8064dc678f",
+                        "empName" : "Madhav Reddy",
+                        "empID" : "M1050787",
+                        "empDomain" : "Web-Tech",
+                        "empSalary" : "3.4L",
+                        "empMobile" : 797878567,
+                        "empType" : "Male",
+                        "__v" : 0
+                    }
+                  ],
+                  "status": 200
+                }
+              }
+            },
+            "400": {
+              "description": "Failed!",
+              "examples": {
+                "application/json": {
+                  "message": "Coundn't Fetch EmployeeList",
+                  "data": [],
+                  "status": 400
+                }
+              }
+            }
+          }
+        }
+      },
+      "/employes/{employeid}": {
+        "delete": {
+          "tags": ["Employees"],
+          "summary": "Deleting the Employee from the List",
+          "description": "Deleting the Employee",
+          "consumes": "application/json",
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "employeid",
+              "in": "path",
+              "description": "ID of employe to delete",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success!",
+              "examples": {
+                "application/json": {
+                  "message": "Employee Deleted",
+                  "data": [],
+                  "status": 200
+                }
+              }
+            },
+            "400": {
+              "description": "Failed!",
+              "examples": {
+                "application/json": {
+                  "message": "Coundn't Delete Employee",
+                  "data": [],
+                  "status": 400
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": ["Employees"],
+          "summary": "Updating the details of Particular Employee",
+          "description": "updating the deatils",
+          "consumes": "application/json",
+          "produces": "applicaion/json",
+          "parameters": [
+            {
+              "name": "Employee Details",
+              "description": "Employee Details Should be given",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "$ref": "#/definitions/Employee"
+              }
+            },
+            {
+              "name": "employeid",
+              "in": "path",
+              "description": "ID of Employee to update",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success!",
+              "examples": {
+                "application/json": {
+                  "message": "Employee Saved",
+                  "data": [
+                    {
+                        "_id" : "5ca9c6fe54aa9c8064dc678f",
+                        "empName" : "Madhav Reddy",
+                        "empID" : "M1050787",
+                        "empDomain" : "Web-Tech",
+                        "empSalary" : "3.4L",
+                        "empMobile" : 797878567,
+                        "empType" : "Male",
+                        "__v" : 0
+                    }
+                  ],
+                  "status": 200
+                }
+              }
+            },
+            "400": {
+              "description": "Failed!",
+              "examples": {
+                "application/json": {
+                  "message": "Coundn't Update Employee",
+                  "data": [],
+                  "status": 400
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Employee": {
+        "description": "All Employee are saved in this format",
+        "required": ["employee"],
+        "type": "object",
+        "properties": {
+          "empName": {
+            "type": "String",
+            "description": "Employee name will be saved here"
+          },
+          "empID": {
+            "type": "String",
+            "description": "Employee id will be saved here"
+          },
+          "empDomain": {
+            "type": "String",
+            "description": "Employee Domain will be saved here"
+          },
+          "empSalary": {
+            "type": "String",
+            "description": "Employee salary will be saved here"
+          },
+          "empMobile": {
+            "type": "Number",
+            "description": "Employee Mobile Number will be saved here"
+          },
+          "empType": {
+            "type": "String",
+            "description": "Employee Type will be saved here"
+          }
+          
+        },
+        "example": {
+            "_id" : "5ca9c6fe54aa9c8064dc678f",
+            "empName" : "Madhav Reddy",
+            "empID" : "M1050787",
+            "empDomain" : "Web-Tech",
+            "empSalary" : "3.4L",
+            "empMobile" : 797878567,
+            "empType" : "Male",
+            "__v" : 0
+        }
+      }
+    }
+  }
+  
