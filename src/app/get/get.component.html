@@ -1,0 +1,21 @@
+<div>
+  <h1>Employee List</h1>
+  <div class="row">
+    <ul *ngFor="let Emps of emps">
+      <div class="column">
+        <mat-card class="example-card">
+          <mat-card-title> {{Emps.empName}}</mat-card-title>
+          <mat-card-content>
+            <li>Employe ID: {{Emps.empID}}</li>
+            <li>Employe Domain:{{Emps.empDomain}}</li>
+            <li>Employe Salary: {{Emps.empSalary}}</li>
+            <li>Contact no: {{Emps.empMobile}}</li>
+            <li>Employe Sex: {{Emps.empType}}</li>
+            <button (click)="edit(Emps)">Edit</button>
+            <button (click)="delete(Emps)">Delete</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </ul>
+  </div>
+</div>

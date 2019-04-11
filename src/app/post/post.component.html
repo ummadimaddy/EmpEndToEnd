@@ -1,0 +1,112 @@
+<form #myForm="ngForm" [formGroup]="CreateEmploye" (ngSubmit)="onsubmit()">
+<ul class="createemp">
+  <h1>Fill the Employee Form</h1>
+  <b>Emp Name: </b>
+  <br>
+  <input type="string" formControlName="empName" required>
+  <br>
+  <b>EmpID: </b>
+  <br>
+  <input type="string" formControlName="empID" required>
+  <br>
+  <b>Emp Domain: </b>
+  <br>
+  <input type="string" formControlName="empDomain" required>
+  <br>
+  <b>Emp Salary: </b>
+  <br>
+  <input type="string" formControlName="empSalary" required>
+  <br>
+  <b>Emp MobileNumber: </b>
+  <br>
+  <input type="number" formControlName="empMobile" required>
+  <br>
+  <b>Emp Sex: </b>
+  <br>
+  <mat-radio-group formControlName="empType" required aria-label="Select an option">
+    <mat-radio-button value="Male">Male</mat-radio-button>
+    <mat-radio-button value="Female">Female</mat-radio-button>
+  </mat-radio-group>
+<!-- <input type="boolean" formControlName="empType" required> -->
+<br>
+  <button type="submit" [disabled]="!CreateEmploye.valid">Submit</button>
+  <button type="button" (click)="clear()">Clear</button>
+</ul>
+</form>
+
+<!-- <p>post</p> -->
+<!-- <form #myForm="ngForm" [formGroup]="CreateEmploye" (ngSubmit)="onsubmit()">
+  <div class="example-container">
+    <h1>Fill the Registration Form</h1>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Enter the Employee Name"
+        type="string"
+        formControlName="empName"
+        required
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Enter the Employee ID"
+        type="string"
+        formControlName="empID"
+        required
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Enter the Employee Domain"
+        type="string"
+        formControlName="empDomain"
+        required
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Enter the Employee Salary"
+        type="string"
+        formControlName="empSalary"
+        required
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Enter the Employe Mobile Number"
+        type="number"
+        formControlName="empMobile"
+        required
+      >
+    </mat-form-field>
+
+    <mat-radio-group
+      formControlName="empType"
+      required
+      aria-label="Select an option"
+    >
+      <mat-radio-button value="Male">Male</mat-radio-button>
+      <mat-radio-button value="Female">Female</mat-radio-button>
+    </mat-radio-group>
+
+    <button
+      mat-button
+      color="primary"
+      type="submit"
+      [disabled]="!CreateEmploye.valid"
+    >
+      Submit
+    </button>
+    <button mat-button color="warn" type="button" (click)="clear()">
+      Clear
+    </button>
+  </div>
+</form> -->
